@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-8 m-auto">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                <h4>Ajouter un Nouveau Produit</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.slug.label_tag }}
+                        {{ form.slug }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Soumettre</button>
+                        <a href="{% url 'index' %}" class="btn btn-secondary ms-2">Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+    }
+    .card-header {
+        border-radius: 10px 10px 0 0;
+    }
+    .btn-success {
+        background-color: #0B2891;
+        border-color: #0B2891;
+    }
+    .btn-success:hover {
+        background-color: #0a2468;
+        border-color: #0a2468;
+    }
+    .btn-secondary {
+        background-color: #D16326;
+        border-color: #D16326;
+    }
+    .btn-secondary:hover {
+        background-color: #b14f1f;
+        border-color: #b14f1f;
+    }
+</style>
+{% endblock %}

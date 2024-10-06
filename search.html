@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<table class=" table table-striped table-hover table-bordered" style="width: 40%;">
+
+      {% if searched %}
+      <br><br><br><br>
+      <h1>vous rechercher {{ searched }}</h1>
+
+      <div class="container mt-5">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-50">
+                        <div class="aspect-ratio-box">
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top"
+                                alt="{{
+                                product.name }}">
+                                {% endif %}
+                            <style>
+                      .aspect-ratio-box {
+                        position: relative;
+                      }
+                      .aspect-ratio-box::after {
+                        display: block;
+                        content: '';
+                        padding-bottom: 56.25% ;
+                      }
+                      .aspect-ratio-box img {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                      }
+                    </style>
+                        </div>
+                        <div class="card-footer">
+                            <div id="aa{{ product.slug }}" class="card-name">{{ product.name }}</div>
+                              
+                            <div style="color: orange" class="card-text">{{ product.price }} $</div>
+                              
+                            <form method="POST" action="#">
+                                {% csrf_token %}
+                                <a href="{{ suite.get_absolute_url }}" class="btn btn-warning">Voire</a>
+                                <button class="btn mon btn-success" type="submit">Ajouter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+      {% endfor %}
+      {% else %}
+      {% endif %}
+</table>
+{% endblock %}

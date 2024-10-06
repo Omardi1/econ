@@ -1,0 +1,74 @@
+{% load static %} {% block content %}
+
+<footer class="bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <h5 class="text-white">Nos services</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Service 1</a></li>
+          <li><a href="#">Service 2</a></li>
+          <li><a href="#">Service 3</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <h5 class="text-white">À propos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Notre entreprise</a></li>
+          <li><a href="#">Notre équipe</a></li>
+          <li><a href="#">Témoignages</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <h5 class="text-white">Casagro</h5>
+        <p class="text-white">
+          Une plateforme de vente et commande en ligne des produits locaux de la
+          Casamance. Elle consiste à vulgariser et valoriser des produits locaux
+          made in Casamance.
+        </p>
+      </div>
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <h5 class="text-white">Nous suivre</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.linkedin.com/feed/"
+              ><i class="fab fa-linkedin"></i> LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+          </li>
+          <li>
+            <a href="https://instagram.com/o.diombaty?igshid=MWM2YjBjM2Q="
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<style>
+  /* Style pour fixer le footer en bas de la page */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .container {
+    flex: 1;
+  }
+
+  footer {
+    background-color: #343a40; /* Couleur de fond */
+    color: #ffffff; /* Couleur du texte */
+    padding: 20px 0; /* Espacement intérieur */
+    position: relative;
+    bottom: 0; /* Position en bas de la fenêtre */
+    width: 100%; /* Largeur totale */
+  }
+</style>
+
+
+{% endblock %}

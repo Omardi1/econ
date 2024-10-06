@@ -1,0 +1,14 @@
+<div class="row mt-2">
+    <div class="col-md-6 m-auto">
+       <div class="card card-body">
+        <form method="POST">
+        {% csrf_token %}
+        <div class="alert alert-danger" role="alert">
+            <h1>Etes-vous sur de vouloir supprimer ce produit {{ product }} ! </h1>
+          </div>
+        <button class="btn btn-danger" type="submit">OUI</button>
+        <a href="{% url 'index' %}" class="btn btn-info" >NON</a>
+    </form>
+    </div>
+</div>
+</div>

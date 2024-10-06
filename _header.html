@@ -1,0 +1,118 @@
+{% load static %}
+
+{% block content %}
+
+<style>
+  .logo {
+    border-radius: 50%;
+  }
+
+</style>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img class="logo"
+        src="{% static 'image/logo.png' %}" alt="Logo" width="60" height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Accueil</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'product-list' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Catégories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'category_detail' %}">jardin</a></li>
+              <li><a class="dropdown-item" href="{% url 'category_detail' %}">électronique</a></li>
+              <li><a class="dropdown-item" href="#">univers bébé</a></li>
+              <li><a class="dropdown-item" href="#">mode</a></li>
+              <li><a class="dropdown-item" href="#">l'informatique</a></li>
+              <li><a class="dropdown-item" href="#">Jouets</a></li>
+              <li><a class="dropdown-item" href="#">sport</a></li>
+              <li><a class="dropdown-item" href="#">Bricolage et automobile</a></li>
+              <li><a class="dropdown-item" href="#">Parapharmacie et beauté </a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'product-list' %}">Tous les produits</a></li>
+            </ul>
+          </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Que voulez-vous acheter?" aria-label="Search" name="q">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+          </form> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+            <span class="nav-link">{{ user.usernam }}</span>
+            <a class="nav-link" href="{% url 'logout' %}">Déconnexion
+              <i class="fas fa-user"></i>{{user.name}}
+            </a>
+            {% else %}
+            <a href="{% url 'register' %}" class="nav-link">S'inscrire</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart_detail' %}">
+              {% with total_items=cart|length %}
+              <i class="fas fa-shopping-cart"></i> Panier (0)
+              {% if total_items > 0 %}
+              <span>Panier: {{ total_items }} produits, {{ cart.get_total_price }} CFA</span>
+              {% else %}
+              <span>Votre panier est vide</span>
+              {% endif %}
+              {% endwith %}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+</header>
+
+<style>
+  /* Ajouter une marge supérieure au carrousel pour le descendre */
+  #carouselExampleIndicators {
+    margin-top: 70px; /* Ajuste la valeur selon la hauteur de la navbar */
+  }
+</style>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner" style="margin: 0 auto; width: 95%;">
+    <div class="carousel-item active">
+      <img src="{% static 'image/ban.jpeg' %}" class="d-block w-100" height="400">
+    </div> 
+    <div class="carousel-item">
+      <img src="{% static 'image/top.jpeg' %}" class="d-block w-100" height="400">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'image/cake.jpeg' %}" class="d-block w-100" height="400">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+{% endblock %}
